@@ -1,0 +1,2 @@
+0 Banjir
+1 Tidak_Banjir

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Prediction Result</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles.css') }}"
+    />
+  </head>
+
+  <body>
+    <h1>Prediction Result</h1>
+
+    {% if image_path %}
+    <h2>Selected Image:</h2>
+    <img src="{{ image_path }}" alt="Selected Image" style="max-width: 400px" />
+    {% endif %} {% if class_name %}
+    <h2>Predicted class:</h2>
+    <p>{{ class_name }}</p>
+    {% endif %} {% if confidence_score %}
+    <h2>Confidence score:</h2>
+    <p>{{ confidence_score }}</p>
+    {% endif %} {% if processing_time %}
+    <h2>Processing Time:</h2>
+    <p>{{ processing_time }}</p>
+    {% endif %}
+
+    <!-- Repredict Button -->
+    <form action="/predict" method="post" enctype="multipart/form-data">
+      <input type="file" name="file" accept="image/*" />
+      <input type="submit" value="Repredict" />
+    </form>
+  </body>
+</html>
